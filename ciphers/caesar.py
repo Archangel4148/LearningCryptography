@@ -26,11 +26,11 @@ def crack_shift(ciphertext: str):
 
 if __name__ == '__main__':
     plaintext = "The quick brown fox's mother is quite gray."
-    shift = 1
+    shift = 9
     ciphertext = caesar_encode_decode(plaintext, int(shift))
     print("Plain Text:", plaintext)
     print("Cipher Text:", ciphertext)
 
     best_shift = crack_shift(ciphertext)
-    print("\nPredicted Shift:", best_shift)
+    print(f"\nPredicted Shift: {best_shift} (or {best_shift-26})")
     print("Predicted Decryption:", caesar_encode_decode(ciphertext, best_shift, decoding=True))
