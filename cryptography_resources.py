@@ -1,3 +1,5 @@
+import math
+
 import pandas as pd
 
 english_letter_frequency = {
@@ -8,6 +10,35 @@ english_letter_frequency = {
     "V": 0.00978, "K": 0.00772, "X": 0.00150, "Z": 0.00074, "J": 0.00153,
     "Q": 0.00095
 }
+
+
+def euclidean_distance(freq1, freq2):
+    # Ensure both dictionaries have the same letters (common set)
+    all_letters = set(freq1.keys()).union(set(freq2.keys()))
+
+    distance = 0
+    for letter in all_letters:
+        f1 = freq1.get(letter, 0)
+        f2 = freq2.get(letter, 0)
+        distance += (f1 - f2) ** 2
+
+    return math.sqrt(distance)
+
+
+def calculate_letter_frequency(text: str):
+    counts = {}
+    for letter in text:
+        if letter in counts:
+            counts[letter] += 1
+        else:
+            counts[letter] = 1
+
+    frequencies = {letter: count / len(text) for letter, count in counts.items()}
+    return frequencies
+
+
+def calculate_difference_from_english(text: str):
+    return euclidean_distance(calculate_letter_frequency(text), english_letter_frequency)
 
 
 class WordDataset:

@@ -1,3 +1,6 @@
+from cryptography_resources import calculate_letter_frequency, calculate_difference_from_english
+
+
 def caesar_encode_decode(plaintext: str, offset: int, decoding=False):
     ciphertext = ""
     offset = -offset if decoding else offset
@@ -12,10 +15,22 @@ def caesar_encode_decode(plaintext: str, offset: int, decoding=False):
     return ciphertext
 
 
+def crack_shift(ciphertext: str):
+    scores = []
+    for shift in range(26):
+        decoded_text = caesar_encode_decode(ciphertext, shift, decoding=True)
+        scores.append(calculate_difference_from_english(decoded_text))
+
+    return scores.index(min(scores))
+
+
 if __name__ == '__main__':
     plaintext = "The quick brown fox's mother is quite gray."
     shift = 1
     ciphertext = caesar_encode_decode(plaintext, int(shift))
-    print("Plain text:", plaintext)
-    print("Cipher text:", ciphertext)
-    print("Decoded text:", caesar_encode_decode(ciphertext, int(shift), decoding=True))
+    print("Plain Text:", plaintext)
+    print("Cipher Text:", ciphertext)
+
+    best_shift = crack_shift(ciphertext)
+    print("\nPredicted Shift:", best_shift)
+    print("Predicted Decryption:", caesar_encode_decode(ciphertext, best_shift, decoding=True))
