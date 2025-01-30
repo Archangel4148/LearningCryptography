@@ -13,9 +13,7 @@ def caesar_encode_decode(plaintext: str, offset: int, decoding=False):
 
 
 if __name__ == '__main__':
-    # plaintext = input("Enter plain text: ")
-    # shift = input("Enter shift value: ")
-    plaintext = "Simon"
+    plaintext = "The quick brown fox's mother is quite gray."
     shift = 1
     ciphertext = caesar_encode_decode(plaintext, int(shift))
     print("Plain text:", plaintext)
