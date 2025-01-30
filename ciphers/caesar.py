@@ -1,4 +1,4 @@
-from cryptography_resources import calculate_letter_frequency, calculate_difference_from_english
+from cryptography_resources import calculate_difference_from_english
 
 
 def caesar_encode_decode(plaintext: str, offset: int, decoding=False):
@@ -32,5 +32,5 @@ if __name__ == '__main__':
     print("Cipher Text:", ciphertext)
 
     best_shift = crack_shift(ciphertext)
-    print(f"\nPredicted Shift: {best_shift} (or {best_shift-26})")
+    print(f"\nPredicted Shift: {best_shift} (or {best_shift - 26})")
     print("Predicted Decryption:", caesar_encode_decode(ciphertext, best_shift, decoding=True))
