@@ -2,6 +2,8 @@ import math
 
 import pandas as pd
 
+ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
 english_letter_frequency = {
     "E": 0.12702, "T": 0.09056, "A": 0.08167, "O": 0.07507, "I": 0.06966,
     "N": 0.06749, "S": 0.06327, "R": 0.06094, "H": 0.05987, "D": 0.04253,
