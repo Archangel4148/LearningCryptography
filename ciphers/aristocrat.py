@@ -1,12 +1,15 @@
 from cryptography_resources import ALPHABET
 
 
-def encode_aristocrat(plaintext: str, mapping: str):
+def aristocrat_encode_decode(plaintext: str, mapping: str, decoding=False):
     mapping = mapping.upper()
     ciphertext = ""
     for c in plaintext.upper():
         if c.isalpha():
-            ciphertext += mapping[ALPHABET.index(c)]
+            if decoding:
+                ciphertext += ALPHABET[mapping.index(c)]
+            else:
+                ciphertext += mapping[ALPHABET.index(c)]
         else:
             ciphertext += c
     return ciphertext
@@ -14,8 +17,9 @@ def encode_aristocrat(plaintext: str, mapping: str):
 
 if __name__ == '__main__':
     # Creating some basic plaintext to encode
-    plaintext = "The quick brown fox jumped over the lazy dog"
+    plaintext = "The quick brown fox jumps over the lazy dog"
     mapping = "QWERTYUIOPASDFGHJKLZXCVBNM"
-    ciphertext = encode_aristocrat(plaintext, mapping)
+    ciphertext = aristocrat_encode_decode(plaintext, mapping)
     print("Plain Text:", plaintext)
     print("Cipher Text:", ciphertext)
+    print("Decoded Text:", aristocrat_encode_decode(ciphertext, mapping, True))
