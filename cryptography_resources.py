@@ -55,3 +55,20 @@ class WordDataset:
     def get_word_count(self):
         """Returns the number of words in the dataset."""
         return len(self.words)
+
+
+class Cipher:
+    def __init__(self, text: str):
+        self.text = text
+
+    def encrypt(self, text=None):
+        if text is None:
+            return self.text
+        else:
+            return text
+
+    def decrypt(self, text=None):
+        if text is None:
+            return self.text
+        else:
+            return text
