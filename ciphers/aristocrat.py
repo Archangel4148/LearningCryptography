@@ -29,20 +29,6 @@ class AristocratCipher(Cipher):
         return plaintext
 
 
-def aristocrat_encode_decode(plaintext: str, mapping: str, decoding=False):
-    mapping = mapping.upper()
-    ciphertext = ""
-    for c in plaintext.upper():
-        if c.isalpha():
-            if decoding:
-                ciphertext += ALPHABET[mapping.index(c)]
-            else:
-                ciphertext += mapping[ALPHABET.index(c)]
-        else:
-            ciphertext += c
-    return ciphertext
-
-
 if __name__ == '__main__':
     # Creating some basic plaintext and using a mapping to encode
     aristocrat = AristocratCipher("The quick brown fox jumps over the lazy dog")
